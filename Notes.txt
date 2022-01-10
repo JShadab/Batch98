@@ -1,0 +1,54 @@
+Network / Graph DBMS
+Distributed DBMS
+OO DBMS
+Relational DBMS
+----
+---
+===========================================
+Some comapnies or Brand who are creating RDBMS:
+---------------------------------------------------
+
+MySQL
+Oracle
+MS SQL Server
+Postgres
+SQLite
+IBM DB2
+H2
+GuptaSQL
+
+-----
+34 ....
+
+-----------------------------------------------------------
+database -> Schema
+row(s) -> tuple(s)
+column(s) -> attribute(s)
+table -> Relation
+
+====
+SQL : is only for RDBMS
+---------------------------
+SELECT * FROM <tableName>
+
+----------------------------------------
+mysql> show databases;
+mysql> show schemas;
+
+mysql> create database Batch98;
+
+mysql> use Batch98;
+
+mysql> create table login (email VARCHAR(25), password VARCHAR(10));
+
+mysql> desc login;
+
+mysql> INSERT INTO login VALUES('abc@gmail.com', 'root');
+
+
+
+
+
+
+
+
