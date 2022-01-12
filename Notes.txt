@@ -32,22 +32,163 @@ SQL : is only for RDBMS
 SELECT * FROM <tableName>
 
 ----------------------------------------
-mysql> show databases;
-mysql> show schemas;
+mysql> show databases   
+mysql> show schemas   
 
-mysql> create database Batch98;
+mysql> create database Batch98   
 
-mysql> use Batch98;
+mysql> use Batch98   
 
-mysql> create table login (email VARCHAR(25), password VARCHAR(10));
+mysql> create table login (email VARCHAR(25), password VARCHAR(10))   
 
-mysql> desc login;
+mysql> desc login   
 
-mysql> INSERT INTO login VALUES('abc@gmail.com', 'root');
+mysql> INSERT INTO login VALUES('abc@gmail.com', 'root')   
+
+===================================================================
+INSERT INTO students VALUES( 0001,	'Ram',	'CSE')   
+INSERT INTO students VALUES( 0002,	'Hari',	'MECH)   
+INSERT INTO students VALUES( 0003,	'Pradeep',	'EEE)   
+INSERT INTO students VALUES( 0004,	'Deepak',	'ETC)   
+
+# 1. Write down the SQL command which will show the Regd. No of Pradeep.
+SELECT regd_no FROM batch98.students WHERE name = 'Pradeep'   
 
 
+# 13. Find the details of all the managers in dept. 10 and all clerks in dept 20 
+# and all employees who are neither managers nor clerks but whose salary 
+# is more than or equal to 2000/-.
+
+select * from employee WHERE (JOB = 'MGR' and DEPTNO = 10) 
+OR  (JOB = 'CLERK' and DEPTNO = 20)
+OR ( SAL > 2000  and JOB <> 'MGR' and JOB <> 'CLERK')   
+
+# 21. If all the employees not receiving commission is entitles to a bonus of Rs. 250/-
+# show the net earnings of all the employees.
+
+select IF (COMM is null , (SAL + 250), (SAL + COMM)) as totalEarnings from employee    
 
 
+# 27. Find all the employees who were hired on last day of the month.
+ select *  from batch97.employee 
+ WHERE  EXTRACT(DAY FROM HIREDATE) = EXTRACT(DAY FROM LAST_DAY(HIREDATE))    
+# select  EXTRACT(DAY FROM HIREDATE) as A,  EXTRACT(DAY FROM LAST_DAY(HIREDATE)) as B from batch97.employee   
+
+
+ select *  from batch97.employee WHERE HIREDATE = LAST_DAY(HIREDATE)    
+ 
+ # 28. Find all the employees who were hired more than 2 years ago.
+ select * from batch97.employee WHERE DATEDIFF(NOW(), HIREDATE) > 730   
+
+
+# 26. Find all the employees who were hired in the month of February (of any year).
+select  * from batch97.employee WHERE EXTRACT(MONTH FROM HIREDATE) = 2   
+
+#31. Display the names of all the employees right aligning them to 15 characters.
+
+select CONCAT(ENAME , SPACE(15)) from batch97.employee   
+select CONCAT(SPACE(15), ENAME ) from batch97.employee   
+select ENAME from batch97.employee   
+
+# Find the managers hired in the year 2003.
+SELECT * FROM batch97.employee WHERE JOB = 'MGR' and EXTRACT(YEAR FROM HIREDATE) = 2003   
+
+# 40. Show the names of all the employees and date on which they completed 3 years of service.
+SELECT  ENAME,ADDDATE(HIREDATE, INTERVAL 3 YEAR) FROM batch97.employee   
+
+# 30. Display the names and jobs of all the employees separated by a space.
+
+SELECT concat(ENAME,' ', JOB) FROM batch97.employee   
+
+# 42. For each employee, display the no. of months passed since the employee joined the company.
+
+SELECT ENAME,PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIREDATE, '%Y%m')) AS months
+ FROM batch97.employee   
+ 
+ # 38. Show the salary of all the employees , rounding it to the nearest Rs. 1000/-.
+SELECT FLOOR(SAL) FROM batch97.employee WHERE floor(sal) = 1000 OR CEIL(sal) = 1000   
+SELECT ENAME,SAL,ROUND((SAL),0) FROM BATCH97.EMPLOYEE   
+
+# 33. Display the names of all the employees without any leading ‘A’.
+SELECT ENAME FROM batch97.employee WHERE ENAME NOT LIKE 'A%'   
+
+----------------------------------------------------------------------------------
+Keys in DBMS:
+--------------------
+1. Primary Key
+2. Foreign Key
+3. Candidate Key
+4. Super(composite) key
+
+# CROSS JOIN
+SELECT * FROM customers CROSS JOIN orders   
+
+Cust_ID   name   email   password   phone   order_id   Cust_Id   status
+1   abc   abc@gmail.com   1234   9988776655   2   4   CANCLED
+1   abc   abc@gmail.com   1234   9988776655   1   2   PENDING
+2   xyz   xyz@gmail.com   4321   9876543210   2   4   CANCLED
+2   xyz   xyz@gmail.com   4321   9876543210   1   2   PENDING
+4   pqr   pqr@gmail.com   1234   9876543210   2   4   CANCLED
+4   pqr   pqr@gmail.com   1234   9876543210   1   2   PENDING
+
+-------------------------------------------------------------------------------------------------
+# INNER JOIN -> Only Common rows in  CUSTOMERS and ORDERS
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS 
+FROM customers, orders WHERE customers.Cust_ID = orders.Cust_Id   
+
+# OR
+
+SELECT A.Cust_ID, A.name, A.email, B.STATUS FROM CUSTOMERS AS A 
+JOIN orders AS B WHERE A.Cust_ID = B.Cust_Id   
+
+Cust_ID   name   email   STATUS
+2   xyz   xyz@gmail.com   PENDING
+4   pqr   pqr@gmail.com   CANCLED
+
+-----------------------------------------------------------------------------------
+
+# LEFT (OUTER) JOIN -> all rows from Left table and common rows from Right table
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS 
+FROM customers LEFT JOIN orders ON customers.Cust_ID = orders.Cust_Id    
+
+Cust_ID   name   email   STATUS
+1   abc   abc@gmail.com   null
+2   xyz   xyz@gmail.com   PENDING
+4   pqr   pqr@gmail.com   CANCLED
+
+
+-------------------------------------------------------------------------------------
+
+# RIGHT (OUTER) JOIN -> all rows from Right table and common rows from Left table
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS 
+FROM customers RIGHT JOIN orders ON customers.Cust_ID = orders.Cust_Id    
+
+Cust_ID   name   email   STATUS
+2   xyz   xyz@gmail.com   PENDING
+4   pqr   pqr@gmail.com   CANCLED
+
+----------------------------------------------------------------------------
+
+# SELF JOIN -> A self join is a regular join, but the table is joined with itself.
+
+SELECT A.Cust_ID, B.name, A.email
+FROM customers A, customers B WHERE A.Cust_ID = 2   
+
+Cust_ID   name   email
+2   abc   xyz@gmail.com
+2   xyz   xyz@gmail.com
+2   pqr   xyz@gmail.com
+
+-----------------------------------------------------------------------
+Sub QUERY:
+----------
+# Sub Query
+SELECT * FROM customers WHERE Cust_ID IN (2, 4); # manually
+
+SELECT * FROM customers WHERE Cust_ID IN (SELECT Cust_Id FROM orders); 3 Programatically
 
 
 
