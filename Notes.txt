@@ -190,6 +190,124 @@ SELECT * FROM customers WHERE Cust_ID IN (2, 4); # manually
 
 SELECT * FROM customers WHERE Cust_ID IN (SELECT Cust_Id FROM orders); 3 Programatically
 
+===================================================
+1NF (First Normal Form) Rules:
+-------------------------------
+
+Each table cell should contain a single value.
+Each record needs to be unique.
+
+2NF (Second Normal Form) Rules :
+-------------------------------
+
+Rule 1- Be in 1NF
+Rule 2- Every non- prime attribute must be depends on all Candidate(s) keys.
+
+Third Normal form (3NF):
+-------------------------------
+A table design is said to be in 3NF if both the following conditions hold:
+
+Table must be in 2NF
+Transitive functional dependency of non-prime attribute on any super key should be removed.
+									(Emp_city)				{emp_id, emp_zip}
+
+X <- Y , Y <- Z
+can we say X <- Z
+
+----------------------------------------------------------
+{
+
+"name" : "shadab",
+"age" : 35,
+"salary" : 1234
+
+} 
+
+{
+
+"brand" : "HP",
+"cost" : 35999,
+"processor" : 'i5'
+
+}
+
+==============================================================
+1. Show all databases available in MongoDB
+> show dbs;
+
+2. Switch Database
+> use Batch98;
+
+3. Create a Database
+> use Batch98_2;
+
+4. How to display current DB name
+> db;
+
+5. Show Collections available in Database
+> show collections;
+
+6. How to Create a Collection in a Database
+> db.createCollection(<nameOfCollection>)
+
+7. getting all collection names in database
+> db.getCollectionNames()
+
+8. How to insert one document in the collection
+> db.Laptop.insertOne({"brand" : "HP", "cost" : 35999, "processor" : 'i5' } );
 
 
+9. How to insert multiple documents in the collection
+>  db.Laptop.insert([
+  {
+    "name": "shadab",
+    "age": 35,
+    "salary": 1234
+  },
+  {
+    "name": "Aman",
+    "age": 25,
+    "salary": 4321
+  }
+] );
 
+
+10. How many documents we have in a collection?
+> db.Laptop.count();
+
+11. find all documents in a collection?
+> db.Laptop.find();
+{ "_id" : ObjectId("61dff70652bf4ef656275c6e"), "brand" : "HP", "cost" : 35999, "processor" : "i5" }
+{ "_id" : ObjectId("61dff98752bf4ef656275c6f"), "name" : "shadab", "age" : 35, "salary" : 1234 }
+{ "_id" : ObjectId("61dff98752bf4ef656275c70"), "name" : "Aman", "age" : 25, "salary" : 4321 }
+
+> db.Laptop.find().pretty();
+{
+        "_id" : ObjectId("61dff70652bf4ef656275c6e"),
+        "brand" : "HP",
+        "cost" : 35999,
+        "processor" : "i5"
+}
+{
+        "_id" : ObjectId("61dff98752bf4ef656275c6f"),
+        "name" : "shadab",
+        "age" : 35,
+        "salary" : 1234
+}
+{
+        "_id" : ObjectId("61dff98752bf4ef656275c70"),
+        "name" : "Aman",
+        "age" : 25,
+        "salary" : 4321
+}
+----------------------------------------------------
+> DELETE:
+===========
+> db.collection.deleteOne({query})
+> db.Laptop.update({"name": "Aman"}, {$set: {"salary" : 9999}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+
+==============================================================================
+
+CRUD  -> CREATE | RETRIEVE | UPDATE | DELETE
