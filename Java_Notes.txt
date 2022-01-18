@@ -350,7 +350,8 @@ int day = 3;
 	b) if divisible by 5 -> "Buzz"
 	c) if divisible by 15 -> "FizzBuzz"
 	d) else "SORRY"
-	
+
+10. Write a program in Java to input 5 numbers from keyboard store in an array and find their sum and average.
 -----------------------------------------------------
 Loop:
 ---------
@@ -364,6 +365,12 @@ UPDATION
 
 -------------------------------------------------
 4. for each loop
+
+ for(<type> <var> : <expr>){
+ }
+ 
+ 
+ **) expr can be a array or collection
 
 ============================== Array =======================
 
@@ -401,11 +408,116 @@ Example:
 
 	int[] nums = {99, 65, 87, 13, 18};
 	
+======================================================================
+Class:
+-------
+1. Class is a blue print (an imaginary thing) which describes the properties(varaibales) and behaviours(methods)
+	of objects
+
+2. Class is a representation of  similr kind of objects.
+
+3. Class is an user defined data type.
+
+Syntax:
+---------
+ <modifier> class <name> <extends> <implements>
+	{
+		//body // member
+					1. variables
+					2. methods
+					3. *constructor
+					4. inner class
+					5. initializer blocks
+					
+					// member categorised in two types: 
+						a) static
+						b) instance
+	}
+
+Example:
+--------
+	class Car
+	{
+	
+		int h;
+		int w;
+	static	float wc;
+		
+	void move(){}
+		
+	static	void avg(){} 	
+	
+	}
+
+*) static members are associated with the class.
+*) instance members are associated with object.
+=================================================
+Object:
+---------------
+1. Object is an real world enetity.
+2. Object is an instance of a class.
+
+
+How to create an object in java
+------------------------------------
+			new <type>()
+
+Example:
+--------
+		int i = 10;
+
+		Car c1 = new Car();
+		
+		Car c2 = new Car();
+
+
+====================================================
+Inheritance
+---------------
+Inheritance is a way of Code reusablity.
+
+
+=======================================================================
+IS-A  relationship (Inhertance)
+HAS-A relationship (Aggregation)
+
+e.g.:
+------
+class Maruti extends Car
+{
+	//-----
+}
+
+class Person{
+
+	void eat(){}
+	void sleep(){}
+
+}
+
+class Employee extends Person{
+
+     Dog dog;
+
+	void getSalary(){}
+}
+
+
+class Dog
+{
+
+}
+
+-------------------------------------------
 
 
 
 
+Polymorphis
 
+Encapsultion
+
+Abstraction
 
 
 
