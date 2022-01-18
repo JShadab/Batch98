@@ -344,10 +344,63 @@ int day = 3;
 8. Write a program in Java to display the multiplication table of a given integer.
 
 
+9. Fizz Buzz Problem
+	a) take any number
+	b) if divisible by 3 -> "Fizz"
+	b) if divisible by 5 -> "Buzz"
+	c) if divisible by 15 -> "FizzBuzz"
+	d) else "SORRY"
+	
+-----------------------------------------------------
+Loop:
+---------
+1. for loop
+2. while loop
+3. do-while loop
+
+INITILIZATION
+CONDITION
+UPDATION
+
+-------------------------------------------------
+4. for each loop
+
+============================== Array =======================
+
+1. Array is a linear data structure.
+2. In Java, arrays are objects.
+3. Array elements can be accessed using index and index starts from 0.
+4. Every array has an extra filed/block called length which contains the size of an array.
 
 
 
+Syntax:
+------------
+1. When know the size but not the actual values
 
+	<type> [] <var> = new <type>[<size>]
+
+Example:
+------------
+
+	int[] nums = new int[5];
+	
+		nums[0]= 99;
+		nums[1]= 65;
+		nums[2]= 87;
+		nums[3]= 13;
+		nums[4]= 18;
+
+
+2. When know the the actual values
+
+	<type> [] <var> = { <values>}
+
+Example:
+------------
+
+	int[] nums = {99, 65, 87, 13, 18};
+	
 
 
 
