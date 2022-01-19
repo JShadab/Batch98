@@ -705,6 +705,20 @@ Other Modifier:
 7. volatile
 8. strictfp
 
+===============================================
+assignment:
+---------------------
+what is final keyword?
+what is abstract class?
+what is interface?
+what is difference between abstract class and interface?
+New enhancement in interface in Java8?
+
+
+
+
+
+
 
 
 
