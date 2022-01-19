@@ -291,14 +291,6 @@ Syntax:   x can be
 Loops:
 ----------
 	
-	
-	
-	}
-
-
-
-
-
 int day = 3;
 		switch (day) {
 		case 1: {
@@ -441,11 +433,11 @@ Example:
 	
 		int h;
 		int w;
-	static	float wc;
+static  float wc;
 		
-	void move(){}
+	    void move(){}
 		
-	static	void avg(){} 	
+static	void avg(){} 	
 	
 	}
 
@@ -470,6 +462,16 @@ Example:
 		
 		Car c2 = new Car();
 
+How to Access members:
+-------------------------
+
+<className>.<member> // for static members
+<ObjRef>.<member> // for instance member
+
+Car.wc =100; // OK
+
+ c1.h =20; //OK
+ c2.w=35;  //OK
 
 ====================================================
 Inheritance
@@ -481,6 +483,7 @@ Inheritance is a way of Code reusablity.
 IS-A  relationship (Inhertance)
 HAS-A relationship (Aggregation)
 
+============================================================
 e.g.:
 ------
 class Maruti extends Car
@@ -509,18 +512,218 @@ class Dog
 }
 
 -------------------------------------------
+Polymorphism:
+----------------
 
+1. method overloding
+2. method overriding
+3. operator overloding
 
-
-
-Polymorphis
-
+===============================================
 Encapsultion
+---------------
+public class Cat
+{
+
+	int age;
+}
+
+
 
 Abstraction
 
+============================================================
+The main() in Java:
+-----------------------
+public class Test {
+
+	public static void main(String[] shad) {
+		
+	}
+
+}
+
+1. called by JVM, which is an external entity, hence declared public.
+2. static method can be called using class name directly.
+3. it will not return any kind of value.
+4. main is a method name not a keyword.
+5. shad is command line arguments of String type array.
+
+====================================================================
+Printing in Java:
+--------------------------
+	System.out.print(data); // data
+	 
+	System.out.println(data); // data + next line
+
+ class A
+ {
+	-----
+	 static B v2;
+	-----
+ }
+
+---------------------------------------
+ class B
+ {
+	void foo(){
+	
+	}
+	
+ }
+
+1. How to call foo() using class B ??
+
+B v1 = new B();
+	v1.foo();
+
+2. How to call foo() using class A ??
+        A.v2.foo();
+
+=================================================================
+Output:
+---------------
+int i = 10;
+
+SOP(i);  // 10
+SOP('i'); // i
+SOP("i"); // i
+SOP(10); // 10
+SOP("10"); // 10
+SOP( 2 * 5); // 10
+
+---------------------------------------------
+Methods:
+-----------
+
+It is an block which consist mny statements and can be called by other code
+
+Syntax:
+==========
+
+<modifier> <returnType> name (<parameters>) <throws>
+		{
+			//body
+		}
+
+exmple:
+--------
+public	int sum1(int a, int b)
+             {
+			   return (a+b);
+			 }
+
+private	void sum2(int a, int b)
+             {
+			   SOP(a+b);
+			 }
+
+==========================================================
+Method OverLoding:
+---------------------
+ -> Within the Java class 2 or more than  2 methods having same name 
+	but different parameter called over loaded method. And this process is called method overloading.
+	(Compile-time | early | static polymorphism)
+
+void sum(float a, int b) {
+		System.out.println(a + b);
+	}
+
+void sum(int a, float b) {
+		System.out.println(x + y);
+	}
+	
+
+	
+void sum(int a, int b, int c) {
+		System.out.println(a + b + c);
+	}
+
+-> If name are same :
+	1. no of paramerter
+	2. data type of parameter
+	3. order of parameter 
+
+----------------------------------------------------
+Constructor:
+---------------
+- >Constructor of speacial member of a class. It is similar to the method but not a method. 
+-> It can be called using new operator while creating an object.
+
+-> constructor are used to construct initial state of an object.
+-> constructor chaining
+
+--> Rules:
+--------------
+1. Name of constructor should be same as name of the class.
+2. only Access modifier( public . private, protected, default) is permissible.
+3. No return type even not a void
+
+Constructor can be 2 types:
+-----------------------------
+1. Default constructor (no args constructor)
+2. Parameterized constructor
+
+***) Every Java class must have a constructor.
+	If we created then OK, otherwise
+	Compiler will create a default constructor with same accessability of the class
 
 
+=================================================================
+Inheritance:
+------------
+parent | super | base
+child  | sub   | drived
+
+
+class A{}
+
+class B extends A{}
+
+B obj = new B();
+
+
+===============================================================
+Access Modifier:
+------------------
+1. public :- It can accessible from anywhere
+2. protected :-1) protetcted members cannot be accessed outside the package. Package must be same
+			   2) but through inheritnce.
+3. default :-  default members cannot be accessed outside the package. Package must be same
+4. private :- It can be accessible whinin the its class
+
+
+
+Other Modifier:
+---------------------
+1. static
+2. abstract
+3. final
+4. native
+5. transient
+6. synchronized
+7. volatile
+8. strictfp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
