@@ -1,7 +1,5 @@
-package p2;
+package hospital;
 
 public class A {
-	
-	
 
 }

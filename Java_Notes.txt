@@ -774,7 +774,62 @@ An interface having single abstract method called functionl interface.
 
 Marker interface:
 ---------------------
-An interface having empty body called marker interface.
+An interface having empty body called marker interface. (Cloneable)
+
+===========================================================================
+Polymorphism:
+------------------
+1. Method Overloding:
+-----------------------
+ -> Within a JAVA class, 2 or more than 2 methods having same name but different parameter
+called method overloding.
+
+  class MehodOverloding
+  {
+	void sum(int a, int b){}
+	
+	void sum(int a, int b, int c){}
+  }
+  
+----------------------------------------------
+2. Method Overriding:
+-----------------------
+ -> Between 2 JAVA class having IS-A relationship, child have exactly same method s of its prent class.
+called method Overriding.
+
+  class Parent
+  {
+	void sum(int a, int b){
+		SOP(a+b);
+	}
+	
+  }
+  
+  class child extends Prent
+  {
+	void sum(int a, int b){
+		SOP(a * b);
+	}
+
+  }
+
+-> Method name and parameters must be same:
+-> for accessbility it can be widen. (private -> default -> protected -> public)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

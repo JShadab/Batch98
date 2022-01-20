@@ -1,5 +1,6 @@
 package p1;
 
+@FunctionalInterface
 public interface Flyble {
 
 	public void fly();
