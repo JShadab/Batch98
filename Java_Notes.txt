@@ -709,12 +709,72 @@ Other Modifier:
 assignment:
 ---------------------
 what is final keyword?
-what is abstract class?
+
+-> we can use final keyword with class, method, and variable.
+-> final class can not be inherited. No Sub class are allowed. But we can create object for final class.
+-> final meyhod can not be overridden.
+-> final vrible can not re-assigned. ( final + variable = constant)
+
+------------------------
+what is abstract keyword?
+
+-> we can use abstract keyword with class and method.
+-> A method without body called abstract.
+
+--> No one cn create objects of an abstract class. Abstract class restricts its instantiation process
+but it can be inherited.
+
+===========================================================================================================
 what is interface?
+==========================
+-> interface is an user defined data type.
+
+-> In java, there is single inheritnce using classes.
+-> Interface provides multiple inheritnce in Java.
+
+-> Interfce contins only abstract and public methods
+
+-> No one cn create objects of interface, but it can be inherited.
+
+-> interface will always super type
+
+===============================================================================
+
+class  extends class   //OK
+
+interface extends interface  //Ok
+
+class implements  interface //Ok
+
+interface   class  // Not possible
+
+-----------------------------------------------
 what is difference between abstract class and interface?
+
 New enhancement in interface in Java8?
+ we can create concrete method in interface body	
+	a) default method
+	b )static method
 
+public interface I {
 
+	void method();
+
+	default void f1() {
+	}
+
+	static void f2() {
+	}
+
+}
+
+Function interface:
+---------------------
+An interface having single abstract method called functionl interface.
+
+Marker interface:
+---------------------
+An interface having empty body called marker interface.
 
 
 
