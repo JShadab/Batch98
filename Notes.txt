@@ -312,3 +312,9 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 
 CRUD  -> CREATE | RETRIEVE | UPDATE | DELETE
 
+===============================================================
+CSS:
+-------------
+1. internal css using <style> tag
+2. external css using as a file
+3. inline css using style attribute
