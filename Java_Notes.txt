@@ -799,7 +799,7 @@ called method Overriding.
 
   class Parent
   {
-	void sum(int a, int b){
+ private  void sum(int a, int b){
 		SOP(a+b);
 	}
 	
@@ -814,7 +814,54 @@ called method Overriding.
   }
 
 -> Method name and parameters must be same:
--> for accessbility it can be widen. (private -> default -> protected -> public)
+-> for accessbility it can be same or widen. (private -> default -> protected -> public)
+-> for the return type:
+	 a) if it is primitive, than as it is.
+	 b) if reference, we can return same or any sub type
+
+*) private and static method doen not take any particiption in method overriding.
+
+=============================================================================================
+package:
+----------
+It is an encapsulation mechanism to group related classes and interafces.
+
+1. approach
+====================
+hospital
+	|- A.java
+	|- B.java
+	|- C.java
+	......
+
+2. approach
+====================
+hospital
+	|- A.java, B.java
+	|- doctors
+		|- C.java, D.java
+		|- cardio
+			|- E.java
+	|- staff
+		|- F.java, G.java
+	|- patient
+		|- H.java, I.java
+	
+	......
+
+-----------------------------------------------------------------------
+-> Ecxception are runtime errors.
+-> Exception are unwanted situation/condition at runtime.
+-> Exceptions are object in Java drived from Throwable class.
+
+try
+catch
+finally
+
+throws
+throw
+
+
 
 
 
