@@ -10,9 +10,9 @@
 
 </head>
 
-<body>
+<body id="root">
 
-   <!--  <h1 id="h1">Calculator</h1>
+    <!--  <h1 id="h1">Calculator</h1>
 
     First Number: <input type="number" id="first" /> <br>
     Second Number: <input type="number" id="second" /> <br>
@@ -22,10 +22,44 @@
     <br>
 
     <input type="button" onclick="add()" value="ADDITION" />
-    <input type="button" onclick="sub()" value="SUBTRACTTION" /> -->
+    <input type="button" onclick="sub()" value="SUBTRACTTION" />
+
+-->
 
 
     <script>
+
+        function createUI() {
+            const body = document.getElementById('root');
+
+            const heading = document.createElement('h1');
+            heading.innerText = "Welcome to my Dynamic Caculator";
+            heading.style.textAlign = "center";
+            heading.style.color = "red";
+
+            const inputFirst = document.createElement('input');
+            const inputSecond = document.createElement('input');
+
+            const btn = document.createElement('button');
+            btn.innerText = "OK";
+
+
+            body.append(heading);
+
+            body.append(document.createTextNode("First: "));
+            body.append(inputFirst);
+
+            body.append(document.createElement('br'));
+            body.append(document.createElement('br'));
+
+            body.append(document.createTextNode("Second: "));
+            body.append(inputSecond);
+
+            body.append(document.createElement('br'));
+            body.append(document.createElement('br'));
+
+            body.append(btn);
+        }
 
 
         function change() {
@@ -57,6 +91,9 @@
             txtResult.innerHTML = a - b;
             // alert(a - b);
         }
+
+        //calling functions
+        createUI();
 
     </script>
 </body>
