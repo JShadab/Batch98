@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <form>
+
+        Name: <input type="text" id="name" name="name" required="required" /> <br>
+        Email: <input type="email" id="email" required /> <br>
+        Age: <input type="number" id="age" required /> <br>
+        Password: <input type="password" id="pass" required /> <br>
+        C-Password: <input type="text" id="cpass" required /> <br>
+
+        <input type="button" value="OK" onclick="validate()" /> <br>
+
+    </form>
+
+
+    <script>
+
+        function validate() {
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const pass = document.getElementById('pass').value;
+            const cpass = document.getElementById('cpass').value;
+
+            const pattern = "/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"; 
+
+            if (!name) {
+                alert('please enter you name');
+                return;
+            }
+            else if (!email) {
+                alert('please enter you email');
+                return;
+            }
+            else if(!pattern.match(email)){
+                alert('Invlid email');
+                return;
+            }
+            else if (!age) {
+                alert('please enter you age');
+                return;
+            }
+            else if (age < 18 || age > 99) {
+                alert('Enter Valid age');
+                return;
+            }
+            else if (!pass) {
+                alert('please enter you pass');
+                return;
+            }
+            else if (!cpass) {
+                alert('please enter you cpass');
+                return;
+            }
+            else if ( pass != cpass) {
+                alert('password are not matched');
+                return;
+            }
+            else{
+                alert('Success');
+                return;
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>
