@@ -318,3 +318,21 @@ CSS:
 1. internal css using <style> tag
 2. external css using as a file
 3. inline css using style attribute
+
+---------------------------------------------------
+Spring Framework:
+-------------------
+Spring Core
+Spring JDBC
+Spring MVC
+Spring REST
+Spring Data using JPA
+
+---------------------------
+
+Car -> Laptop
+Engine -> Processor
+
+
+
+

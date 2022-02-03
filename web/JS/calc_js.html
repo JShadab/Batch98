@@ -38,10 +38,20 @@
             heading.style.color = "red";
 
             const inputFirst = document.createElement('input');
+            inputFirst.type = "number";
+            inputFirst.id = "first";
+
             const inputSecond = document.createElement('input');
+            inputSecond.type = "number";
+            inputSecond.id = "second";
+
+            const inputResult = document.createElement('input');
+            inputResult.type = "number";
+            inputResult.id = "result";
 
             const btn = document.createElement('button');
-            btn.innerText = "OK";
+            btn.innerText = "ADD";
+            btn.onclick = add;
 
 
             body.append(heading);
@@ -58,42 +68,33 @@
             body.append(document.createElement('br'));
             body.append(document.createElement('br'));
 
+            body.append(document.createTextNode("Result: "));
+            body.append(inputResult);
+
+            body.append(document.createElement('br'));
+            body.append(document.createElement('br'));
+
             body.append(btn);
         }
 
-
-        function change() {
-            const heading = document.getElementById('h1');
-            heading.innerHTML = "Welcome to My Calculator";
-            heading.style.color = "red";
-        }
-
-
-        const txtFirst = document.getElementById('first');
-        const txtSecond = document.getElementById('second');
-        const txtResult = document.getElementById('result');
-
-
         function add() {
+
+            const txtFirst = document.getElementById('first');
+            const txtSecond = document.getElementById('second');
+            const txtResult = document.getElementById('result');
 
             const a = Number(txtFirst.value);
             const b = Number(txtSecond.value);
 
             txtResult.value = (a + b);
 
-            // alert(a + b);
+            alert(a + b);
         }
-        function sub() {
 
-            const a = txtFirst.value;
-            const b = txtSecond.value;
-
-            txtResult.innerHTML = a - b;
-            // alert(a - b);
-        }
 
         //calling functions
         createUI();
+
 
     </script>
 </body>
