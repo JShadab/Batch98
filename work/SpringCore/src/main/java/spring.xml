@@ -9,13 +9,13 @@
 
 		<!-- <property name="company" value="Audy" /> -->
 		
-		<property name="engine" ref="engine"/>
+		<property name="engine" ref="engineID"/>
 		
 		<constructor-arg value="BMW" />
 
 	</bean>
 
-	<bean id="engine" class="model.Engine"></bean>
+	<bean id="engineID" class="model.Engine"></bean>
 
 
 </beans>
