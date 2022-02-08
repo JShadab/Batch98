@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.thbs.Banking.entity.Customer;
+import com.thbs.Banking.entity.Login;
 import com.thbs.Banking.repository.CustomerRepository;
 
 @Service
@@ -34,6 +35,11 @@ public class CustomerService {
 
 	public List<Customer> getAll() {
 		return customerRepository.findAll();
+	}
+
+	public boolean authenticate(Login login) {
+
+		return customerRepository.findByEmailAndPassword(login.getEmail(), login.getPassword()) != null;
 	}
 
 }

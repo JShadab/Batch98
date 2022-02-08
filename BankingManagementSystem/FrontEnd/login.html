@@ -14,9 +14,7 @@ h1 {
 	text-align: center;
 }
 
-div {
-	width: 600px;
-}
+
 </style>
 </head>
 
@@ -24,24 +22,27 @@ div {
 
 	<h1>Customer Login</h1>
 
-	<div class="container">
+	<div class="container" style="width: 400px;>
 
 		<form>
 
 			Email: <input type="email" name="email" id="email"
-				class="form-control"> <br> Phone: <input type="number"
-				name="phone" id="phone" class="form-control"> <br> DOB:
-			<input type="date" name="dob" id="dob" class="form-control">
-			<br> Password: <input type="password" name="pass" id="pass"
-				class="form-control"> <br> <input type="button"
-				value="Login" onclick="validate()" class="btn btn-primary">
+				class="form-control"> <br> 
+			 Password: <input type="password" name="pass" id="pass"
+				class="form-control"> <br> 
+				
+				<input type="button"
+				value="Login" onclick="doLogin()" class="btn btn-primary">
 			<input type="reset" class="btn btn-warning">
 
 		</form>
+		<hr>
+
+		New User ? <a href="register.html">Open Account</a>
 
 	</div>
 
-
+<script type="text/javascript" src="js/myScript.js"></script>
 
 </body>
 

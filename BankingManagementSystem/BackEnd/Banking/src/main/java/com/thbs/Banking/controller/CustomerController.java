@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thbs.Banking.entity.Customer;
+import com.thbs.Banking.entity.Login;
 import com.thbs.Banking.service.CustomerService;
 
 @RestController
@@ -47,6 +48,11 @@ public class CustomerController {
 	@GetMapping("/customer")
 	public List<Customer> getAll() {
 		return customerService.getAll();
+	}
+
+	@PostMapping("/login")
+	public boolean authenticate(@RequestBody Login login) {
+		return customerService.authenticate(login);
 	}
 
 }

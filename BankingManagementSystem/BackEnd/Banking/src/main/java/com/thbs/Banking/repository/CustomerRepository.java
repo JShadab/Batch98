@@ -8,5 +8,7 @@ import com.thbs.Banking.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
+	Customer findByEmailAndPassword(String email, String password);
+
 
 }

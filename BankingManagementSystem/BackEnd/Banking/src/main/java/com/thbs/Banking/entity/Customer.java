@@ -11,19 +11,20 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
 	private String dob;
+	private String password;
 	private String accountNo;
 	private String accountType;
-	
+
 	public long getId() {
 		return id;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -68,6 +69,14 @@ public class Customer {
 		this.dob = dob;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getAccountNo() {
 		return accountNo;
 	}
@@ -87,10 +96,8 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phone=" + phone + ", dob=" + dob + ", accountNo=" + accountNo + ", accountType=" + accountType
-				+ "]";
+				+ ", phone=" + phone + ", dob=" + dob + ", password=" + password + ", accountNo=" + accountNo
+				+ ", accountType=" + accountType + "]";
 	}
-
-	
 
 }
