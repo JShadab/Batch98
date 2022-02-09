@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.thbs.Banking.entity.Customer;
 import com.thbs.Banking.entity.Login;
+import com.thbs.Banking.entity.Transaction;
 import com.thbs.Banking.service.CustomerService;
+import com.thbs.Banking.service.TransactionService;
 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500/")
@@ -23,6 +25,9 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private TransactionService transactionService;
 
 	@PostMapping("/customer")
 	public Customer save(@RequestBody Customer customer) {
@@ -53,6 +58,11 @@ public class CustomerController {
 	@PostMapping("/login")
 	public boolean authenticate(@RequestBody Login login) {
 		return customerService.authenticate(login);
+	}
+	
+	@PostMapping("/deposite")
+	public String deposite(@RequestBody Transaction transaction) {
+		return transactionService.deposite(transaction);
 	}
 
 }

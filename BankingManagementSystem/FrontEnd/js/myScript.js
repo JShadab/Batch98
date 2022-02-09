@@ -15,10 +15,10 @@ function doLogin() {
 	loginObj.email = email;
 	loginObj.password = pass;
 
-	checkLogin(loginObj);
+	checkLoginAPI(loginObj);
 
 }
-async function checkLogin(loginObj) {
+async function checkLoginAPI(loginObj) {
 	const url = BASE_URL + '/login';
 
 	const data = {
@@ -63,10 +63,10 @@ function openAccount() {
 	customerObj.dob = dob;
 	customerObj.accountType = accountType;
 
-	addCustomer(customerObj);
+	addCustomerAPI(customerObj);
 
 }
-async function addCustomer(customerObj) {
+async function addCustomerAPI(customerObj) {
 	const url = BASE_URL + '/customer';
 
 	const data = {
@@ -87,7 +87,7 @@ async function addCustomer(customerObj) {
 	}
 	else { alert('Login failed'); }
 
-	console.log(content);
+	console.log(customer);
 }
 
 function fetchAccountNum() {
@@ -95,4 +95,41 @@ function fetchAccountNum() {
 	const accountNumber = localStorage.getItem("ACC_NUM");
 	span.innerHTML = accountNumber;
 
+}
+
+function deposite() {
+
+	const accountNum = document.getElementById('accNum').value;
+	const amount = document.getElementById('amount').value;
+	const source = document.getElementById('source').value;
+	const remark = document.getElementById('remark').value;
+
+	const transactionObj = {}
+	transactionObj.accountNum = accountNum;
+	transactionObj.amount = amount;
+	transactionObj.source = source;
+	transactionObj.remark = remark;
+	transactionObj.type = "CREDIT";
+
+	callDepositeAPI(transactionObj);
+
+}
+
+async function callDepositeAPI(transactionObj) {
+	const url = BASE_URL + '/deposite';
+
+	const data = {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(transactionObj)
+	};
+	const rawResponse = await fetch(url, data);
+	const message = await rawResponse.json();
+
+	alert(message);
+	window.location.href = UI_URL + '/dashBoard.html';
+	console.log(message);
 }

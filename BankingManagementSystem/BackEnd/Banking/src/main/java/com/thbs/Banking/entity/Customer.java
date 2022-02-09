@@ -20,6 +20,7 @@ public class Customer {
 	private String password;
 	private String accountNo;
 	private String accountType;
+	private double balance;
 
 	public long getId() {
 		return id;
@@ -93,11 +94,19 @@ public class Customer {
 		this.accountType = accountType;
 	}
 
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phone=" + phone + ", dob=" + dob + ", password=" + password + ", accountNo=" + accountNo
-				+ ", accountType=" + accountType + "]";
+				+ ", accountType=" + accountType + ", balance=" + balance + "]";
 	}
 
 }

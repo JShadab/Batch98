@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 import com.thbs.Banking.entity.Customer;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long>{
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	Customer findByEmailAndPassword(String email, String password);
 
+	Customer findByAccountNo(String accountNum);
 
 }
