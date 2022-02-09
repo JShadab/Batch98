@@ -25,7 +25,7 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private TransactionService transactionService;
 
@@ -59,10 +59,15 @@ public class CustomerController {
 	public boolean authenticate(@RequestBody Login login) {
 		return customerService.authenticate(login);
 	}
-	
+
 	@PostMapping("/deposite")
 	public String deposite(@RequestBody Transaction transaction) {
 		return transactionService.deposite(transaction);
+	}
+
+	@GetMapping("/transaction/{accountNum}")
+	public List<Transaction> getAllTransactions(@PathVariable String accountNum) {
+		return transactionService.getAll(accountNum);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.thbs.Banking.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class TransactionService {
 		}
 
 		return "Transaction Failed...";
+	}
+
+	public List<Transaction> getAll(String accountNum) {
+		return transactionRepository.findAllByAccountNum(accountNum);
 	}
 
 }

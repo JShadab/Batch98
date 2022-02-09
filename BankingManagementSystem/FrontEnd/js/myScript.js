@@ -133,3 +133,71 @@ async function callDepositeAPI(transactionObj) {
 	window.location.href = UI_URL + '/dashBoard.html';
 	console.log(message);
 }
+
+function fetchTransactionData() {
+
+	const accountNum = localStorage.getItem("ACC_NUM");
+
+	callTransactionDataAPI(accountNum);
+
+}
+
+async function callTransactionDataAPI(accountNum) {
+
+	const url = BASE_URL + '/transaction/' + accountNum;
+
+	const data = {
+		method: 'GET',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		}
+	};
+	const rawResponse = await fetch(url, data);
+	const allTransactions = await rawResponse.json();
+
+	fillStatementTable(allTransactions)
+
+	console.log(allTransactions);
+}
+
+function fillStatementTable(allTransactions) {
+
+	const tbody = document.getElementById('statements');
+	for (transaction of allTransactions) {
+
+
+		let row = document.createElement('tr');
+
+		let idCol = document.createElement('td');
+		idCol.innerHTML = transaction.id;
+
+		let accountNumCol = document.createElement('td');
+		accountNumCol.innerHTML = transaction.accountNo;
+
+		let amountCol = document.createElement('td');
+		amountCol.innerHTML = transaction.amount;
+
+		let typeCol = document.createElement('td');
+		typeCol.innerHTML = transaction.type;
+
+		let sourceCol = document.createElement('td');
+		sourceCol.innerHTML = transaction.source;
+
+		let dateCol = document.createElement('td');
+		dateCol.innerHTML = transaction.date;
+
+		let remarksCol = document.createElement('td');
+		remarksCol.innerHTML = transaction.remark;
+
+		row.append(idCol);
+		row.append(accountNumCol);
+		row.append(amountCol);
+		row.append(typeCol);
+		row.append(sourceCol);
+		row.append(dateCol);
+		row.append(remarksCol);
+
+		tbody.append(row);
+	}
+}
