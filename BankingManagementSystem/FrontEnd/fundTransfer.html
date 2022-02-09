@@ -44,7 +44,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="https://getbootstrap.com/docs/5.1/examples/navbar-fixed/#">Apna Bank</a>
+			<a class="navbar-brand" href="dashBoard.html">Apna Bank</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 				aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -68,7 +68,8 @@
 					</li>
 				</ul>
 				<form class="d-flex">
-					<a class="btn btn-outline-success"  href="login.html">Logout</a>
+					<h4 id="accountNum" style="color: aliceblue;">Account Number</h4> &nbsp; <a
+						class="btn btn-outline-success" href="login.html">Logout</a>
 				</form>
 			</div>
 		</div>
@@ -80,10 +81,10 @@
 		<div class="container">
 			<form>
 
-			Payer Account Number: <input type="text" name="payerAccNum" id="payerAccNum" class="form-control">
-			Payee Account Number: <input type="text" name="payeeAccNum" id="payeeAccNum" class="form-control">
+				Payer Account Number: <input type="text" name="payerAccNum" id="payerAccNum" class="form-control">
+				Payee Account Number: <input type="text" name="payeeAccNum" id="payeeAccNum" class="form-control">
 
-			 Amount: <input type="number" name="amount" id="amount" class="form-control">
+				Amount: <input type="number" name="amount" id="amount" class="form-control">
 				Source : <select name="source" id="source" class="form-control">
 					<option value="CASH">SAVING</option>
 					<option value="CHECK">CHECK</option>
@@ -103,7 +104,11 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 
+	<script src="js/myScript.js"></script>
 
+	<script>
+		fetchAccountNum();
+	</script>
 
 
 </body>

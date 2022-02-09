@@ -2,6 +2,7 @@ package com.thbs.Banking.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ public class CustomerService {
 	private CustomerRepository customerRepository;
 
 	public Customer save(Customer customer) {
+		
+		Random random = new Random();
+		String accountNumber = String.valueOf(random.nextInt(10000000));
+		customer.setAccountNo(accountNumber);
+
 		return customerRepository.save(customer);
 	}
 

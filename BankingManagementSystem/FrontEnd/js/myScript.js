@@ -42,7 +42,7 @@ async function checkLogin(loginObj) {
 	console.log(content);
 }
 
-function validate() {
+function openAccount() {
 
 	const firstName = document.getElementById('firstName').value;
 	const lastName = document.getElementById('lastName').value;
@@ -78,7 +78,21 @@ async function addCustomer(customerObj) {
 		body: JSON.stringify(customerObj)
 	};
 	const rawResponse = await fetch(url, data);
-	const content = await rawResponse.json();
+	const customer = await rawResponse.json();
+
+	if (customer) {
+		alert('Registraion Successful');
+		localStorage.setItem("ACC_NUM", customer.accountNo);
+		window.location.href = UI_URL + '/login.html';
+	}
+	else { alert('Login failed'); }
 
 	console.log(content);
+}
+
+function fetchAccountNum() {
+	const span = document.getElementById('accountNum');
+	const accountNumber = localStorage.getItem("ACC_NUM");
+	span.innerHTML = accountNumber;
+
 }
