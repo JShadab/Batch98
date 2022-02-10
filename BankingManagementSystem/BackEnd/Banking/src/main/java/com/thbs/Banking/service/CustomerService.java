@@ -19,7 +19,7 @@ public class CustomerService {
 	private CustomerRepository customerRepository;
 
 	public Customer save(Customer customer) {
-		
+
 		Random random = new Random();
 		String accountNumber = String.valueOf(random.nextInt(10000000));
 		customer.setAccountNo(accountNumber);
@@ -43,9 +43,9 @@ public class CustomerService {
 		return customerRepository.findAll();
 	}
 
-	public boolean authenticate(Login login) {
+	public Customer authenticate(Login login) {
 
-		return customerRepository.findByEmailAndPassword(login.getEmail(), login.getPassword()) != null;
+		return customerRepository.findByEmailAndPassword(login.getEmail(), login.getPassword());
 	}
 
 }

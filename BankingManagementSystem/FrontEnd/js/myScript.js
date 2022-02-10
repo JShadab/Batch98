@@ -30,10 +30,11 @@ async function checkLoginAPI(loginObj) {
 		body: JSON.stringify(loginObj)
 	};
 	const rawResponse = await fetch(url, data);
-	const content = await rawResponse.json();
+	const customer = await rawResponse.json();
 
-	if (content == true) {
+	if (customer) {
 		alert('Login Successful');
+		localStorage.setItem("ACC_NUM", customer.accountNo);
 		window.location.href = UI_URL + '/dashBoard.html';
 	}
 	else { alert('Login failed'); }
@@ -82,7 +83,7 @@ async function addCustomerAPI(customerObj) {
 
 	if (customer) {
 		alert('Registraion Successful');
-		localStorage.setItem("ACC_NUM", customer.accountNo);
+
 		window.location.href = UI_URL + '/login.html';
 	}
 	else { alert('Login failed'); }
@@ -200,4 +201,54 @@ function fillStatementTable(allTransactions) {
 
 		tbody.append(row);
 	}
+}
+
+/************************** FUND TRANSFER************************************* */
+function fundTransfer() {
+
+	const payerAccNum = document.getElementById('payerAccNum').value;
+	const payeeAccNum = document.getElementById('payeeAccNum').value;
+	const amount = document.getElementById('amount').value;
+	const source = document.getElementById('source').value;
+	const remark = document.getElementById('remark').value;
+
+
+	const transactionCreditObj = {}
+	transactionCreditObj.accountNum = payeeAccNum;
+	transactionCreditObj.amount = amount;
+	transactionCreditObj.source = source;
+	transactionCreditObj.remark = remark;
+	transactionCreditObj.type = "CREDIT";
+
+	const transactionDebitObj = {}
+	transactionDebitObj.accountNum = payerAccNum;
+	transactionDebitObj.amount = amount;
+	transactionDebitObj.source = source;
+	transactionDebitObj.remark = remark;
+	transactionDebitObj.type = "DEBIT";
+
+	const transactionObj = {};
+	transactionObj.transactions = [transactionDebitObj, transactionCreditObj];
+
+	callFundTransferAPI(transactionObj);
+
+}
+
+async function callFundTransferAPI(transactionObj) {
+	const url = BASE_URL + '/fundTransfers';
+
+	const data = {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(transactionObj)
+	};
+	const rawResponse = await fetch(url, data);
+	const message = await rawResponse.json();
+
+	alert(message);
+	window.location.href = UI_URL + '/dashBoard.html';
+	console.log(message);
 }

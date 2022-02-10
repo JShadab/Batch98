@@ -79,7 +79,7 @@
 	<br>
 	<main class="container">
 		<div class="container">
-			<form>
+			<form method="">
 
 				Payer Account Number: <input type="text" name="payerAccNum" id="payerAccNum" class="form-control">
 				Payee Account Number: <input type="text" name="payeeAccNum" id="payeeAccNum" class="form-control">
@@ -90,9 +90,9 @@
 					<option value="CHECK">CHECK</option>
 					<option value="UPI">UPI</option>
 				</select>
-				Remarke: <input type="text" name="remark" id="remark" class="form-control">
+				Remarks: <input type="text" name="remark" id="remark" class="form-control">
 				<br>
-				<input type="button" value="Transfer" onclick="transfer()" class="btn btn-primary"> <input type="reset"
+				<input type="button" value="Transfer" onclick="fundTransfer()" class="btn btn-primary"> <input type="reset"
 					class="btn btn-warning">
 
 			</form>

@@ -43,8 +43,47 @@ public class TransactionService {
 		return "Transaction Failed...";
 	}
 
+	public String withdraw(Transaction transaction) {
+
+		String accountNum = transaction.getAccountNum();
+		Customer customer = customerRepository.findByAccountNo(accountNum);
+
+		if (customer != null) {
+
+			double balance = customer.getBalance();
+			balance = balance - transaction.getAmount();
+			customer.setBalance(balance);
+			customerRepository.save(customer);
+
+			String date = LocalDate.now().toString();
+			transaction.setDate(date);
+
+			transactionRepository.save(transaction);
+			return "Transaction completed successfully";
+
+		}
+
+		return "Transaction Failed...";
+	}
+
 	public List<Transaction> getAll(String accountNum) {
 		return transactionRepository.findAllByAccountNum(accountNum);
+	}
+
+	public String fundTransfer(Transaction[] transactions) {
+
+		for (Transaction transaction : transactions) {
+
+			if (transaction.getType().equals("CREDIT")) {
+
+				return deposite(transaction);
+			}
+			if (transaction.getType().equals("DEBIT")) {
+				return withdraw(transaction);
+			}
+
+		}
+		return "Success";
 	}
 
 }

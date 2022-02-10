@@ -56,13 +56,19 @@ public class CustomerController {
 	}
 
 	@PostMapping("/login")
-	public boolean authenticate(@RequestBody Login login) {
+	public Customer authenticate(@RequestBody Login login) {
 		return customerService.authenticate(login);
 	}
 
 	@PostMapping("/deposite")
 	public String deposite(@RequestBody Transaction transaction) {
 		return transactionService.deposite(transaction);
+	}
+	
+
+	@PostMapping("/fundTransfers")
+	public String fundTransfer(@RequestBody List<Transaction> transactions) {
+		return transactionService.fundTransfer(transactions);
 	}
 
 	@GetMapping("/transaction/{accountNum}")
