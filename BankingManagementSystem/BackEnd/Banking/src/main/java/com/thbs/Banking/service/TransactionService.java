@@ -70,16 +70,16 @@ public class TransactionService {
 		return transactionRepository.findAllByAccountNum(accountNum);
 	}
 
-	public String fundTransfer(Transaction[] transactions) {
+	public String fundTransfer(List<Transaction> transactions) {
 
 		for (Transaction transaction : transactions) {
 
 			if (transaction.getType().equals("CREDIT")) {
 
-				return deposite(transaction);
+				 deposite(transaction);
 			}
 			if (transaction.getType().equals("DEBIT")) {
-				return withdraw(transaction);
+				 withdraw(transaction);
 			}
 
 		}

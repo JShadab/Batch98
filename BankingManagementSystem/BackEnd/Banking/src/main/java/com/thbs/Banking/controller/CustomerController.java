@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thbs.Banking.entity.Customer;
+import com.thbs.Banking.entity.FundTransfer;
 import com.thbs.Banking.entity.Login;
 import com.thbs.Banking.entity.Transaction;
 import com.thbs.Banking.service.CustomerService;
@@ -64,11 +65,10 @@ public class CustomerController {
 	public String deposite(@RequestBody Transaction transaction) {
 		return transactionService.deposite(transaction);
 	}
-	
 
 	@PostMapping("/fundTransfers")
-	public String fundTransfer(@RequestBody List<Transaction> transactions) {
-		return transactionService.fundTransfer(transactions);
+	public String fundTransfer(@RequestBody FundTransfer fundTransfer) {
+		return transactionService.fundTransfer(fundTransfer.getTransactions());
 	}
 
 	@GetMapping("/transaction/{accountNum}")

@@ -4,6 +4,8 @@ const BASE_URL = "http://localhost:9090";
 // UI URL
 const UI_URL = "http://127.0.0.1:5500";
 
+
+/************************** LOGIN ************************************* */
 function doLogin() {
 
 	const email = document.getElementById('email').value;
@@ -42,7 +44,7 @@ async function checkLoginAPI(loginObj) {
 
 	console.log(content);
 }
-
+/************************** CUstomer Registration************************************* */
 function openAccount() {
 
 	const firstName = document.getElementById('firstName').value;
@@ -91,12 +93,16 @@ async function addCustomerAPI(customerObj) {
 	console.log(customer);
 }
 
+/*****************************************************/
+
 function fetchAccountNum() {
 	const span = document.getElementById('accountNum');
 	const accountNumber = localStorage.getItem("ACC_NUM");
 	span.innerHTML = accountNumber;
 
 }
+
+/************************** DEPOSITE MONEY************************************* */
 
 function deposite() {
 
@@ -134,6 +140,48 @@ async function callDepositeAPI(transactionObj) {
 	window.location.href = UI_URL + '/dashBoard.html';
 	console.log(message);
 }
+
+/************************** WithDraw MONEY************************************* */
+
+function withdraw() {
+
+	const accountNum = document.getElementById('accNum').value;
+	const amount = document.getElementById('amount').value;
+	const source = document.getElementById('source').value;
+	const remark = document.getElementById('remark').value;
+
+	const transactionObj = {}
+	transactionObj.accountNum = accountNum;
+	transactionObj.amount = amount;
+	transactionObj.source = source;
+	transactionObj.remark = remark;
+	transactionObj.type = "DEBIT";
+
+	callWithdrawAPI(transactionObj);
+
+}
+
+async function callWithdrawAPI(transactionObj) {
+	const url = BASE_URL + '/withdraw';
+
+	const data = {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(transactionObj)
+	};
+	const rawResponse = await fetch(url, data);
+	const message = await rawResponse.json();
+
+	alert(message);
+	window.location.href = UI_URL + '/dashBoard.html';
+	console.log(message);
+}
+
+
+/************************** SHOW STATEMENTs************************************* */
 
 function fetchTransactionData() {
 
@@ -174,7 +222,7 @@ function fillStatementTable(allTransactions) {
 		idCol.innerHTML = transaction.id;
 
 		let accountNumCol = document.createElement('td');
-		accountNumCol.innerHTML = transaction.accountNo;
+		accountNumCol.innerHTML = transaction.accountNum;
 
 		let amountCol = document.createElement('td');
 		amountCol.innerHTML = transaction.amount;
@@ -227,10 +275,11 @@ function fundTransfer() {
 	transactionDebitObj.remark = remark;
 	transactionDebitObj.type = "DEBIT";
 
-	const transactionObj = {};
-	transactionObj.transactions = [transactionDebitObj, transactionCreditObj];
+	const transactionArr = [];
+	transactionArr.push(transactionDebitObj);
+	transactionArr.push(transactionCreditObj);
 
-	callFundTransferAPI(transactionObj);
+	callFundTransferAPI({transactions: transactionArr});
 
 }
 
@@ -245,6 +294,7 @@ async function callFundTransferAPI(transactionObj) {
 		},
 		body: JSON.stringify(transactionObj)
 	};
+	console.log(data);
 	const rawResponse = await fetch(url, data);
 	const message = await rawResponse.json();
 

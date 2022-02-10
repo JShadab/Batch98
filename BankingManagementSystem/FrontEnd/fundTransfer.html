@@ -81,12 +81,12 @@
 		<div class="container">
 			<form method="">
 
-				Payer Account Number: <input type="text" name="payerAccNum" id="payerAccNum" class="form-control">
+				Payer Account Number: <input type="text" name="payerAccNum" id="payerAccNum" class="form-control" readonly>
 				Payee Account Number: <input type="text" name="payeeAccNum" id="payeeAccNum" class="form-control">
 
 				Amount: <input type="number" name="amount" id="amount" class="form-control">
 				Source : <select name="source" id="source" class="form-control">
-					<option value="CASH">SAVING</option>
+					<option value="CASH">CASH</option>
 					<option value="CHECK">CHECK</option>
 					<option value="UPI">UPI</option>
 				</select>
@@ -108,6 +108,12 @@
 
 	<script>
 		fetchAccountNum();
+
+		const accountNum = localStorage.getItem("ACC_NUM");
+		document.getElementById('payerAccNum').value=accountNum;
+
+
+
 	</script>
 
 
