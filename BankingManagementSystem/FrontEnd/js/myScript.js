@@ -1,5 +1,5 @@
 // BackEnd URL
-const BASE_URL = "http://localhost:9090";
+const BASE_URL = "http://localhost:9090/api";
 
 // UI URL
 const UI_URL = "http://127.0.0.1:5500";
@@ -101,6 +101,7 @@ function fetchAccountNum() {
 	span.innerHTML = accountNumber;
 
 }
+
 
 /************************** DEPOSITE MONEY************************************* */
 
@@ -279,7 +280,7 @@ function fundTransfer() {
 	transactionArr.push(transactionDebitObj);
 	transactionArr.push(transactionCreditObj);
 
-	callFundTransferAPI({transactions: transactionArr});
+	callFundTransferAPI({ transactions: transactionArr });
 
 }
 
@@ -301,4 +302,44 @@ async function callFundTransferAPI(transactionObj) {
 	alert(message);
 	window.location.href = UI_URL + '/dashBoard.html';
 	console.log(message);
+}
+
+function fillProfilePage(){
+	callProfileAPI();
+}
+
+async function callProfileAPI() {
+
+	const accountNum = localStorage.getItem('ACC_NUM');
+
+	const url = BASE_URL + '/profile/' + accountNum;
+
+	const data = {
+		method: 'GET',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		}
+	};
+
+	const rawResponse = await fetch(url, data);
+	const customer = await rawResponse.json();
+
+	if (customer) {
+		
+		console.log(customer);
+
+		document.getElementById('firstName').innerHTML = customer.firstName;
+		document.getElementById('lastName').innerHTML = customer.lastName;
+		document.getElementById('email').innerHTML = customer.email;
+		document.getElementById('balance').innerHTML = customer.balance;
+		document.getElementById('phone').innerHTML = customer.phone;
+		document.getElementById('dob').innerHTML = customer.dob;
+		document.getElementById('accountType').innerHTML = customer.accountType;
+
+	} else {
+		alert('Some error happens...');
+	}
+
+
 }

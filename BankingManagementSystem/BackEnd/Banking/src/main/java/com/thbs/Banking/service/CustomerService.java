@@ -48,4 +48,9 @@ public class CustomerService {
 		return customerRepository.findByEmailAndPassword(login.getEmail(), login.getPassword());
 	}
 
+	public Customer getProfile(String accountNum) {
+
+		return customerRepository.findByAccountNo(accountNum);
+	}
+
 }

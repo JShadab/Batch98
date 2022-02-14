@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thbs.Banking.entity.Customer;
@@ -22,6 +23,7 @@ import com.thbs.Banking.service.TransactionService;
 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500/")
+@RequestMapping("/api")
 public class CustomerController {
 
 	@Autowired
@@ -74,6 +76,11 @@ public class CustomerController {
 	@GetMapping("/transaction/{accountNum}")
 	public List<Transaction> getAllTransactions(@PathVariable String accountNum) {
 		return transactionService.getAll(accountNum);
+	}
+
+	@GetMapping("/profile/{accountNum}")
+	public Customer getProfile(@PathVariable String accountNum) {
+		return customerService.getProfile(accountNum);
 	}
 
 }
